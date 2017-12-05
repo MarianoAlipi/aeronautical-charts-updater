@@ -1,0 +1,103 @@
+{
+"path": "",
+"airac": 0,
+"ip": "http://155.178.201.160/d-tpp/",
+
+"airports":
+[
+	{
+		"code": "KBOS",
+		"urlSegment": "00058",
+		"files": [
+				     ["AD", "APD"],
+				     ["ILD15R", "ILS 15R"],
+				     ["IL22L", "ILS 22L"],
+				     ["IL27", "ILS 27"],
+				     ["IL33L", "ILS 33L"],
+				     ["IL4R", "ILS 4R"]
+				 ]
+	}, {
+		"code": "KDFW",
+		"urlSegment": "06039",
+		"files": [
+					 ["AD", "APD"],
+				     ["IL31R", "ILS 31R"],
+				     ["IL35C", "ILS 35C"],
+					 ["IL35R", "ILS 35R"],
+					 ["IL36L", "ILS 36L"]
+				 ]
+	}, {
+		"code": "KEWR",
+		"urlSegment": "00285",
+		"files": [
+					 ["AD", "APD"],
+				     ["IL11", "ILS 11"],
+				     ["IL22L", "ILS 22L"],
+				     ["IL22R", "ILS 22R"],
+				     ["IL4L", "ILS 4L"],
+				     ["IL4R", "ILS 4R"]
+				 ]
+	}, {
+		"code": "KFLL",
+		"urlSegment": "00744",
+		"files": [
+					 ["AD", "APD"],
+				     ["IL10L", "ILS 10L"],
+				     ["IL10R", "ILS 10R"],
+				     ["IL28L", "ILS 28L"],
+				     ["IL28R", "ILS 28R"]
+				 ]
+	}, {
+		"code": "KIAH",
+		"urlSegment": "05461",
+		"files": [
+					 ["AD", "APD"],
+					 ["IL8L", "ILS 8L"],
+					 ["IL8R", "ILS 8R"],
+					 ["IL9", "ILS 9"],
+					 ["IL15R", "ILS 15R"],
+					 ["IL26L", "ILS 26L"],
+					 ["IL26R", "ILS 26R"],
+					 ["IL27", "ILS 27"],
+					 ["IL33R", "ILS 33R"]
+				 ]
+	}, {
+		"code": "KJFK",
+		"urlSegment": "00610",
+		"files": [
+					 ["AD", "APD"],
+					 ["IL13L", "ILS 13L"],
+					 ["IL22L", "ILS 22L"],
+					 ["IL31L", "ILS 31L"],
+					 ["IL31R", "ILS 31R"],
+					 ["IL4L", "ILS 4L"],
+					 ["IL4R", "ILS 4R"]
+				 ]
+	}, {
+		"code": "KLAX",
+		"urlSegment": "00237",
+		"files": [
+					 ["AD", "APD"],
+					 ["IL24L", "ILS 24L"],
+					 ["IL24R", "ILS 24R"],
+					 ["IL25L", "ILS 25L"],
+					 ["IL25R", "ILS 25R"],
+					 ["IL6L", "ILS 6L"],
+					 ["IL7L", "ILS 7L"],
+					 ["IL7R", "ILS 7R"]
+				 ]
+	}, {
+		"code": "KSEA",
+		"urlSegment": "00582",
+		"files": [
+					 ["AD", "APD"],
+					 ["IL16L", "ILS 16L"],
+					 ["IL16R", "ILS 16R"],
+					 ["IL34L", "ILS 34L"],
+					 ["IL34R", "ILS 34R"]
+				 ]
+	}
+
+]
+
+}

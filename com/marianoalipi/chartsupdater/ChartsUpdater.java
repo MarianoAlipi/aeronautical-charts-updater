@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 public class ChartsUpdater extends JFrame {
 
-	protected static final String version = "1.1"; 
+	protected static final String version = "1.2"; 
 	
 	static ChartsUpdater chartsUpdater;
 	DownloadWorker downloadWorker = new DownloadWorker();
@@ -27,8 +27,9 @@ public class ChartsUpdater extends JFrame {
 
 	static File file;
 	static int airac;
-	JTextField airacTF;
-	JButton downloadB;
+	JTextField airacTF,
+			   pathTF = new JTextField();
+	JButton downloadB, settingsB;
 	JLabel downloadingL;
 
 	public ChartsUpdater() {
@@ -43,6 +44,14 @@ public class ChartsUpdater extends JFrame {
 		setResizable(false);
 		setVisible(true);
 
+// === READ SAVED DATA ===
+		
+		DataIO.read();
+		pathTF.setText(DataIO.path);
+		airac = DataIO.airac;
+
+// === CREATE WINDOW ===
+		
 		ButtonListener buttonListener = new ButtonListener();
 		
 		Container pane = this.getContentPane();
@@ -57,8 +66,8 @@ public class ChartsUpdater extends JFrame {
 		chooser.setDialogTitle("Set the destination folder");
 		chooser.setAcceptAllFileFilterUsed(false);
 
-		JTextField pathTF = new JTextField();
-		pathTF.setText("");
+//		pathTF = new JTextField();
+//		pathTF.setText("");
 		pathTF.setEditable(false);
 		pathTF.setColumns(33);
 
@@ -69,18 +78,23 @@ public class ChartsUpdater extends JFrame {
 
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					file = chooser.getSelectedFile();
-					pathTF.setText(file.getAbsolutePath());
+					DataIO.path = file.getAbsolutePath();
+					pathTF.setText(DataIO.path);
 					//This is where the application should open the file.
 				} else {
 					// Cancelled by user.
 				}
 			}
 		});
+
+		
+		settingsB = new JButton("Settings");
+		settingsB.addActionListener(buttonListener);
 		
 		JLabel airacL = new JLabel("AIRAC:");
 		
 		airacTF = new JTextField();
-		airacTF.setText("");
+		airacTF.setText( (airac != 0) ?  "" + airac : "");
 		airacTF.setColumns(10);
 
 		downloadB = new JButton("Download");
@@ -88,36 +102,40 @@ public class ChartsUpdater extends JFrame {
 		
 		downloadingL = new JLabel("");
 
-		pathPane.add(select, BorderLayout.LINE_START);
-		pathPane.add(pathTF, BorderLayout.LINE_END);
-		pane.add(pathPane,	 BorderLayout.PAGE_START);
-		pane.add(airacL,	 BorderLayout.LINE_START);
-		pane.add(airacTF,	 BorderLayout.CENTER);
+		pathPane.add(select,		 BorderLayout.LINE_START);
+		pathPane.add(pathTF,		 BorderLayout.LINE_END);
+		pane.add(pathPane,			 BorderLayout.PAGE_START);
+		pane.add(settingsB, 		 BorderLayout.LINE_START);
+		pane.add(airacL,			 BorderLayout.LINE_START);
+		pane.add(airacTF,			 BorderLayout.CENTER);
 		downloadPane.add(downloadB,	 BorderLayout.PAGE_END);
-		pane.add(downloadPane, BorderLayout.PAGE_END);
-		pane.add(downloadingL, BorderLayout.PAGE_END);
+		pane.add(downloadPane, 		 BorderLayout.PAGE_END);
+		pane.add(downloadingL, 		 BorderLayout.PAGE_END);
 		
 		pack();
 	}
 
 	public static void main(String[] args) {
 		chartsUpdater = new ChartsUpdater();
+		chartsUpdater.toFront();
 	}
 
-	class ButtonListener implements ActionListener {
+	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// Download button.
 			if(e.getSource() == downloadB) {
 				// Check that a folder has been selected and a valid AIRAC has been provided.
 				try {				
 					file.getAbsolutePath();
+					DataIO.path = file.getAbsolutePath();
 				} catch (NullPointerException ex) {
-					JOptionPane.showMessageDialog(getParent(), "No folder selected.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(getParent(), "No folder selected, or folder doesn't exist.", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				try {
 					airac = Integer.parseInt(airacTF.getText());
+					DataIO.airac = airac;
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(getParent(), "Invalid AIRAC.", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -127,6 +145,10 @@ public class ChartsUpdater extends JFrame {
 				downloadWorker.execute();
 				downloadB.setEnabled(false);
 				downloadingL.setText("Downloading...");
+			
+			} else if (e.getSource() == settingsB) { // Settings button.				
+				new Settings();
+				setEnabled(false);
 			}
 		}
 	}

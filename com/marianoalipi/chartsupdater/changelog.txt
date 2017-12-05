@@ -4,6 +4,10 @@
 1.1
 * Updated APD file address.
 
+1.2
++ Added a settings window:
+	+ Ability to add and remove airports.
+	+ Ability to add and remove files to download.
+	+ Ability to change the URL.
+
 ------------------------------------------------------------
-Planned:
-+ Option to change the addresses, name of downloaded files and other settings.

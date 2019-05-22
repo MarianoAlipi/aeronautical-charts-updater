@@ -17,7 +17,7 @@ public class DownloadWorker extends SwingWorker<Integer, String> {
 
 	
 	protected Integer doInBackground() throws Exception {
-		// Example URL: http://155.178.201.160/d-tpp/1707/00610IL13L.PDF
+		// Example URL: http://aeronav.faa.gov/d-tpp/1707/00610IL13L.PDF
 
 		String[] airportURLs = new String[DataIO.airports.size()];
 		for(byte i=0;i<DataIO.airports.size();i++) {
@@ -27,7 +27,7 @@ public class DownloadWorker extends SwingWorker<Integer, String> {
 		// Download process.
 		byte total = 0, notDownloaded = 0;
 		URL url = null;
-		// url = new URL("https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/1908-kl-t-zamenhof.jpg/800px-1908-kl-t-zamenhof.jpg"); // L.L. Zamenhof
+		//url = new URL("https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/1908-kl-t-zamenhof.jpg/800px-1908-kl-t-zamenhof.jpg"); // L.L. Zamenhof
 
 		InputStream in;
 		
@@ -66,6 +66,9 @@ public class DownloadWorker extends SwingWorker<Integer, String> {
 					notDownloaded++;
 				} catch (IOException e1) {
 					System.out.println("FileNotFoundException.\ni = " + i + "\nj = " + j + "\nFile: " + url.toString() + "\n");
+				} catch (Exception ex) {
+					System.out.println("Other exception:");
+					ex.printStackTrace();
 				}
 			}
 			

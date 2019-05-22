@@ -24,3 +24,6 @@ hs_err_pid*
 # Eclipse project files
 .project
 .classpath
+
+# The program's settings
+savedSettings.txt

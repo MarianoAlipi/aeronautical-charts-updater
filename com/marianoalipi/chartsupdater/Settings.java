@@ -103,10 +103,10 @@ public class Settings extends JFrame {
 		scrollPaneAirports.setPreferredSize(new Dimension(70, 415));
 		
 		JPanel airportsButtonsPanel = new JPanel(new FlowLayout());
-		aptAddB = new JButton("┼");
+		aptAddB = new JButton("+");
 		aptAddB.addActionListener(buttonListener);
 		
-		aptDelB = new JButton("—");
+		aptDelB = new JButton("-");
 		aptDelB.addActionListener(buttonListener);
 		aptDelB.setEnabled(false);
 		
@@ -144,11 +144,11 @@ public class Settings extends JFrame {
         
 		
         JPanel propsButtonsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		propsAddB = new JButton("┼");
+		propsAddB = new JButton("+");
 		propsAddB.addActionListener(buttonListener);
 		propsAddB.setEnabled(false);
 		
-		propsDelB = new JButton("—");
+		propsDelB = new JButton("-");
 		propsDelB.addActionListener(buttonListener);
 		propsDelB.setEnabled(false);
 		
@@ -255,7 +255,7 @@ public class Settings extends JFrame {
 			} else if (source == aptAddB) {
 				  code = JOptionPane.showInputDialog(currentInstance, "Enter the airport's code:\nE.g. \"KBOS\"", "Add airport", JOptionPane.QUESTION_MESSAGE);
 				  if (code == null) return;
-				  urlSegment = JOptionPane.showInputDialog(currentInstance, "Enter the airport's URL segment:\n\nE.g. In the URL \"http://155.178.201.160/d-tpp/1707/00058ILD15R.pdf\",\n\"00058\" is the airport's segment.", "Add airport", JOptionPane.QUESTION_MESSAGE);
+				  urlSegment = JOptionPane.showInputDialog(currentInstance, "Enter the airport's URL segment:\n\nE.g. In the URL \"http://aeronav.faa.gov/d-tpp/1707/00058ILD15R.pdf\",\n\"00058\" is the airport's segment.", "Add airport", JOptionPane.QUESTION_MESSAGE);
 				  try {
 					  urlSegment = String.format("%05d", Integer.parseInt(urlSegment));
 				  } catch (Exception ex) {
@@ -283,9 +283,9 @@ public class Settings extends JFrame {
 					return;
 				}
 			} else if (source == propsAddB) {
-				urlSegment = JOptionPane.showInputDialog(currentInstance, "Enter the file's URL segment:\n\nE.g. In the URL \"http://155.178.201.160/d-tpp/1707/00058ILD15R.pdf\",\n\"ILD15R\" is the file's segment.", "Add file", JOptionPane.QUESTION_MESSAGE);
+				urlSegment = JOptionPane.showInputDialog(currentInstance, "Enter the file's URL segment:\n\nE.g. In the URL \"http://aeronav.faa.gov/d-tpp/1707/00058ILD15R.pdf\",\n\"ILD15R\" is the file's segment.", "Add file", JOptionPane.QUESTION_MESSAGE);
 				if (urlSegment == null) return;
-				fileName = JOptionPane.showInputDialog(currentInstance, "Enter the name of the file once saved:\n\nE.g. The file downloaded from \"http://155.178.201.160/d-tpp/1707/00058ILD15R.pdf\",\nis saved as\"ILS 15R\".", "Add file", JOptionPane.QUESTION_MESSAGE);
+				fileName = JOptionPane.showInputDialog(currentInstance, "Enter the name of the file once saved:\n\nE.g. The file downloaded from \"http://aeronav.faa.gov/d-tpp/1707/00058ILD15R.pdf\",\nis saved as\"ILS 15R\".", "Add file", JOptionPane.QUESTION_MESSAGE);
 				
 				index = airportsL.getSelectedIndex();
 				Airport workingAirport = airports.get(index);

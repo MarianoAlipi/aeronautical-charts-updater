@@ -1,7 +1,7 @@
 {
 "path": "",
 "airac": 0,
-"ip": "http://155.178.201.160/d-tpp/",
+"ip": "https://aeronav.faa.gov/d-tpp/",
 
 "airports":
 [
@@ -10,7 +10,7 @@
 		"urlSegment": "00058",
 		"files": [
 				     ["AD", "APD"],
-				     ["ILD15R", "ILS 15R"],
+				     ["IL15R", "ILS 15R"],
 				     ["IL22L", "ILS 22L"],
 				     ["IL27", "ILS 27"],
 				     ["IL33L", "ILS 33L"],

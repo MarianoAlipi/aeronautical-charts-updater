@@ -18,12 +18,12 @@ import javax.swing.JTextField;
 
 public class ChartsUpdater extends JFrame {
 
-	protected static final String version = "1.2"; 
+	protected static final String version = "1.3"; 
 	
 	static ChartsUpdater chartsUpdater;
 	DownloadWorker downloadWorker = new DownloadWorker();
 	private static final long serialVersionUID = 1L;
-	final Dimension SIZE = new Dimension(510, 100);
+	final Dimension SIZE = new Dimension(510, 110);
 
 	static File file;
 	static int airac;

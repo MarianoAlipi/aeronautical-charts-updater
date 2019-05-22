@@ -50,7 +50,7 @@ public class DownloadWorker extends SwingWorker<Integer, String> {
 			for(byte j=0;j<DataIO.airports.get(i).getFiles().length;j++) {
 				try {
 					url = new URL(airportURLs[i] + DataIO.airports.get(i).getFiles()[j][0] + ".PDF");
-					System.out.println(DataIO.airports.get(i).getFiles()[j][1].toString());
+					System.out.print("Downloading \"" + DataIO.airports.get(i).getFiles()[j][1].toString() + "\" from:\t");
 					System.out.println(url.toString());
 					in = url.openStream();
 					Files.copy(in, Paths.get(DataIO.path + "/" + aptCode + "/" + aptCode + " " + DataIO.airports.get(i).getFiles()[j][1] + ".pdf"), StandardCopyOption.REPLACE_EXISTING);
